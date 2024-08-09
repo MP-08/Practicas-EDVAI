@@ -1,0 +1,85 @@
+mpresas@DESKTOP-10O043O:~$ docker start edvai_hadoop
+edvai_hadoop
+mpresas@DESKTOP-10O043O:~$ docker start edvai_postgres
+edvai_postgres
+mpresas@DESKTOP-10O043O:~$ docker exec -it edvai_hadoop bash
+root@4b2a49450dc4:/# su hadoop
+hadoop@4b2a49450dc4:/$ nano landing.sh
+hadoop@4b2a49450dc4:/$ sudo nano landing.sh
+bash: sudo: command not found
+hadoop@4b2a49450dc4:/$ cd /home/hadoop/scripts/
+hadoop@4b2a49450dc4:~/scripts$ nano landing.sh
+hadoop@4b2a49450dc4:~/scripts$ chmod +x landing.sh
+hadoop@4b2a49450dc4:~/scripts$ ./landing.sh
+mkdir: invalid option -- 'O'
+Try 'mkdir --help' for more information.
+hadoop@4b2a49450dc4:~/scripts$ nano landing.sh
+hadoop@4b2a49450dc4:~/scripts$ nano landing.sh
+hadoop@4b2a49450dc4:~/scripts$ nano landing.sh
+hadoop@4b2a49450dc4:~/scripts$ ./landing.sh
+--2024-08-09 02:53:52--  https://github.com/fpineyro/homework-0/raw/master/starwars.csv
+Resolving github.com (github.com)... 20.201.28.151
+Connecting to github.com (github.com)|20.201.28.151|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/fpineyro/homework-0/master/starwars.csv [following]
+--2024-08-09 02:53:52--  https://raw.githubusercontent.com/fpineyro/homework-0/master/starwars.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5462 (5.3K) [text/plain]
+Saving to: '/home/hadoop/landing/starwars.csv'
+
+/home/hadoop/landing/starwars 100%[=================================================>]   5.33K  --.-KB/s    in 0s
+
+2024-08-09 02:53:53 (115 MB/s) - '/home/hadoop/landing/starwars.csv' saved [5462/5462]
+
+El archivo starwars.csv ha sido descargado, enviado a HDFS y eliminado del directorio temporal.
+hadoop@4b2a49450dc4:~/scripts$ cd /home/hadoop/landing
+hadoop@4b2a49450dc4:~/landing$ ls
+yellow_tripdata_2021-01.csv  yellow_tripdata_2021-01.csv.1  yellow_tripdata_2021-01.csv.2
+hadoop@4b2a49450dc4:~/landing$ cd /ingest
+bash: cd: /ingest: No such file or directory
+hadoop@4b2a49450dc4:~/landing$ cd..
+bash: cd..: command not found
+hadoop@4b2a49450dc4:~/landing$ cd
+hadoop@4b2a49450dc4:~$ cd /ingest
+bash: cd: /ingest: No such file or directory
+hadoop@4b2a49450dc4:~$ /ingest
+bash: /ingest: No such file or directory
+hadoop@4b2a49450dc4:~$ cd.. /ingest
+bash: cd..: command not found
+hadoop@4b2a49450dc4:~$ ls
+airflow              hadoop      hs_err_pid10630.log  hs_err_pid11254.log  nohup.out    spark            yarn-utils.py
+codegen_region.java  hadoopdata  hs_err_pid10724.log  landing              region.java  spark-warehouse
+derby.log            hive        hs_err_pid10887.log  metastore_db         scripts      sqoop
+hadoop@4b2a49450dc4:~$ /hadoop/ingest
+bash: /hadoop/ingest: No such file or directory
+hadoop@4b2a49450dc4:~$ cd /hadoop/ingest
+bash: cd: /hadoop/ingest: No such file or directory
+hadoop@4b2a49450dc4:~$ cd /hadoop
+bash: cd: /hadoop: No such file or directory
+hadoop@4b2a49450dc4:~$ cd /home/hadoop
+hadoop@4b2a49450dc4:~$ ls
+airflow              hadoop      hs_err_pid10630.log  hs_err_pid11254.log  nohup.out    spark            yarn-utils.py
+codegen_region.java  hadoopdata  hs_err_pid10724.log  landing              region.java  spark-warehouse
+derby.log            hive        hs_err_pid10887.log  metastore_db         scripts      sqoop
+hadoop@4b2a49450dc4:~$ cd /home
+hadoop@4b2a49450dc4:/home$ ls
+hadoop
+hadoop@4b2a49450dc4:/home$ cd /hadoop
+bash: cd: /hadoop: No such file or directory
+hadoop@4b2a49450dc4:/home$ cd /home/hadoop
+hadoop@4b2a49450dc4:~$ ls
+airflow              hadoop      hs_err_pid10630.log  hs_err_pid11254.log  nohup.out    spark            yarn-utils.py
+codegen_region.java  hadoopdata  hs_err_pid10724.log  landing              region.java  spark-warehouse
+derby.log            hive        hs_err_pid10887.log  metastore_db         scripts      sqoop
+hadoop@4b2a49450dc4:~$ cd /landing
+bash: cd: /landing: No such file or directory
+hadoop@4b2a49450dc4:~$ cd /home/hadoop/ingest
+bash: cd: /home/hadoop/ingest: No such file or directory
+hadoop@4b2a49450dc4:~$ cd /home/hadoop/landing
+hadoop@4b2a49450dc4:~/landing$ hdfs dfs -ls /ingest
+Found 2 items
+-rw-r--r--   1 hadoop supergroup       5462 2024-08-09 02:53 /ingest/starwars.csv
+-rw-r--r--   1 hadoop supergroup  125981363 2022-05-09 17:58 /ingest/yellow_tripdata_2021-01.csv
+hadoop@4b2a49450dc4:~/landing$
